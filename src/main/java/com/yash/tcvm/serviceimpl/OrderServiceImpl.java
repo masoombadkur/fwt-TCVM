@@ -3,6 +3,8 @@ package com.yash.tcvm.serviceimpl;
 import java.io.FileNotFoundException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.yash.tcvm.dao.OrderDao;
 import com.yash.tcvm.enumeration.Drink;
 import com.yash.tcvm.exception.EmptyException;
@@ -10,6 +12,8 @@ import com.yash.tcvm.model.Order;
 import com.yash.tcvm.service.OrderService;
 
 public class OrderServiceImpl implements OrderService {
+	
+	private static Logger logger = Logger.getLogger(OrderServiceImpl.class);
 	
 	private OrderDao orderDao;
 
@@ -19,6 +23,8 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public List<Order> getOrders() throws FileNotFoundException, EmptyException {
+		logger.info("OrderServiceImpl's getOrders() method starts");
+		
 		List<Order> orders = orderDao.getOrders();
 		if (orders == null) {
 			throw new NullPointerException("Order's list is null");
@@ -32,6 +38,8 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public List<Order> getOrdersByDrink(Drink drink) throws FileNotFoundException, EmptyException {
+		logger.info("OrderServiceImpl's getOrdersByDrink() method starts");
+		
 		List<Order> ordersListByDrink = orderDao.getOrdersByDrink(drink);
 		if (ordersListByDrink == null) {
 			throw new NullPointerException("Order's list for given drink is null");
@@ -45,6 +53,8 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public int addOrder(Order order) throws FileNotFoundException, EmptyException {
+		logger.info("OrderServiceImpl's addOrder() method starts");
+		
 		int rowsAffected = 0;
 		if (order == null) {
 			throw new NullPointerException("Order cannot be null");

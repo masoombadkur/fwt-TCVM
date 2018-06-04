@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -16,8 +17,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import com.yash.tcvm.literal.ExcelSheetConstants;
 
 public class ExcelUtil {
+	
+	private static Logger logger = Logger.getLogger(ExcelUtil.class);
 
 	public static void createExcelSheet(List<String> columns, String sheetName, String fileName, List<Object[]> data) throws IOException {
+		logger.info("ExcelUtil's createExcelSheet() method starts");
+		
 		Workbook workbook = new XSSFWorkbook();
 		Sheet sheet = workbook.createSheet(sheetName);
 

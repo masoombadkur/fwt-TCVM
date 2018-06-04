@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,10 +16,14 @@ import com.google.gson.GsonBuilder;
 import com.yash.tcvm.exception.EmptyException;
 
 public class JSONUtil {
+	
+	private static Logger logger = Logger.getLogger(JSONUtil.class);
 
 	static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 	public static void writeJSONToFile(Object object, String filePath, String fileName) throws EmptyException {
+		logger.info("JSONUtil's writeJSONToFile() method starts");
+		
 		if(filePath.isEmpty()){
 			throw new EmptyException("File path is null");
 		}
@@ -34,12 +40,17 @@ public class JSONUtil {
 	}
 
 	public static String convertObjectToJSONString(Object object) {
+		logger.info("JSONUtil's convertObjectToJSONString() method starts");
+		
 		String jsonString = gson.toJson(object);
 		System.out.println(jsonString);
 		return jsonString;
 	}
 
 	public static List<?> readJSONFromFile(String filePath, String fileName) throws FileNotFoundException, EmptyException {
+		
+		logger.info("JSONUtil's readJSONFromFile() method starts");
+		
 		if(filePath.isEmpty()){
 			throw new EmptyException("File path is null");
 		}
@@ -73,6 +84,8 @@ public class JSONUtil {
 	}
 
 	public static <T> T mapObjectToSpecificModelObject(Class<T> objectType, Object object) {
+		logger.info("JSONUtil's mapObjectToSpecificModelObject() method starts");
+		
 		ObjectMapper objectMapper = new ObjectMapper();
 		return objectMapper.convertValue(object, objectType);
 	}

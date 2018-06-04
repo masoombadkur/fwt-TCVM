@@ -3,12 +3,16 @@ package com.yash.tcvm.config;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import com.yash.tcvm.config.interfaces.AbstractDrinkConfigurer;
 import com.yash.tcvm.config.interfaces.IDrinkConfigurer;
 import com.yash.tcvm.enumeration.Drink;
 import com.yash.tcvm.enumeration.Ingredient;
 
 public class CoffeeConfiguration extends AbstractDrinkConfigurer {
+	
+	private static Logger logger = Logger.getLogger(CoffeeConfiguration.class);
 
 	private static IDrinkConfigurer drinkConfigurer;
 
@@ -37,6 +41,8 @@ public class CoffeeConfiguration extends AbstractDrinkConfigurer {
 	}
 
 	public void configIngredientConsumption() {
+		logger.info("CoffeeConfiguration's configIngredientConsumption() method starts");
+		
 		Map<Ingredient, Double> ingredientsConsumption = new HashMap<Ingredient, Double>();
 
 		ingredientsConsumption.put(Ingredient.COFFEE, COFFEE_CONSUMPTION);
@@ -48,6 +54,8 @@ public class CoffeeConfiguration extends AbstractDrinkConfigurer {
 	}
 
 	public void configIngredientWastage() {
+		logger.info("CoffeeConfiguration's configIngredientWastage() method starts");
+		
 		Map<Ingredient, Double> ingredientsWastage = new HashMap<Ingredient, Double>();
 
 		ingredientsWastage.put(Ingredient.COFFEE, COFFEE_WASTAGE);
@@ -59,10 +67,12 @@ public class CoffeeConfiguration extends AbstractDrinkConfigurer {
 	}
 
 	public void configDrinkType() {
+		logger.info("CoffeeConfiguration's configDrinkType() method starts");
 		setDrinkType(Drink.COFFEE);
 	}
 
 	public void configDrinkRate() {
+		logger.info("CoffeeConfiguration's configDrinkRate() method starts");
 		setDrinkRate(RATE);
 	}
 

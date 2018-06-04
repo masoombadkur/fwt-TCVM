@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.yash.tcvm.dao.OrderDao;
 import com.yash.tcvm.enumeration.Drink;
 import com.yash.tcvm.exception.EmptyException;
@@ -12,9 +14,13 @@ import com.yash.tcvm.model.Order;
 import com.yash.tcvm.util.JSONUtil;
 
 public class OrderDaoImpl implements OrderDao {
+	
+	private static Logger logger = Logger.getLogger(OrderDaoImpl.class);
 
 	@Override
 	public List<Order> getOrders() throws FileNotFoundException, EmptyException {
+		logger.info("OrderDaoImpl's getOrders() method starts");
+		
 		List<Order> orders = new ArrayList<>();
 		List<?> orderList = JSONUtil.readJSONFromFile(JSONFileConstants.JSON_FILE_PATH,
 				JSONFileConstants.ORDER_JSON_FILE_NAME);
@@ -26,6 +32,8 @@ public class OrderDaoImpl implements OrderDao {
 
 	@Override
 	public int insertOrder(Order order) throws EmptyException, FileNotFoundException {
+		logger.info("OrderDaoImpl's insertOrder() method starts");
+		
 		int rowsAffected = 0;
 		if (order == null) {
 			throw new NullPointerException();
@@ -49,6 +57,8 @@ public class OrderDaoImpl implements OrderDao {
 
 	@Override
 	public List<Order> getOrdersByDrink(Drink drink) throws FileNotFoundException {
+		logger.info("OrderDaoImpl's getOrdersByDrink() method starts");
+		
 		List<Order> selectedOrders = new ArrayList<>();
 		List<Order> orders = null;
 		try {

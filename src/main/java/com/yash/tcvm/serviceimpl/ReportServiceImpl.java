@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.yash.tcvm.builder.BlackCoffeeBuilder;
 import com.yash.tcvm.builder.BlackTeaBuilder;
 import com.yash.tcvm.builder.CoffeeBuilder;
@@ -25,6 +27,8 @@ import com.yash.tcvm.service.ReportService;
 import com.yash.tcvm.util.ExcelUtil;
 
 public class ReportServiceImpl implements ReportService {
+	
+	private static Logger logger = Logger.getLogger(ReportServiceImpl.class);
 
 	private ContainerDao containerDao;
 	private ContainerService containerService;
@@ -41,6 +45,8 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	public void generateContainerStatusReport() throws EmptyException, IOException {
+		logger.info("ReportServiceImpl's generateContainerStatusReport() method starts");
+		
 		List<String> columns = new ArrayList<String>();
 		columns.add("Ingredient");
 		columns.add("Maximum capacity");
@@ -61,6 +67,8 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	public void generateDrinkWiseCupCostReport() throws EmptyException, IOException {
+		logger.info("ReportServiceImpl's generateDrinkWiseCupCostReport() method starts");
+		
 		List<String> columns = new ArrayList<String>();
 		columns.add("Drink");
 		columns.add("Price Each");
@@ -80,6 +88,8 @@ public class ReportServiceImpl implements ReportService {
 
 	private Object[] getDrinkWiseData(IDrinkBuilder drinkBuilder, Drink drink)
 			throws FileNotFoundException, EmptyException {
+		logger.info("ReportServiceImpl's getDrinkWiseData() method starts");
+		
 		List<Order> orders = null;
 		orders = orderService.getOrdersByDrink(drink);
 

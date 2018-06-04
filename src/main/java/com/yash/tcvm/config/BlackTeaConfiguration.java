@@ -3,12 +3,16 @@ package com.yash.tcvm.config;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import com.yash.tcvm.config.interfaces.AbstractDrinkConfigurer;
 import com.yash.tcvm.config.interfaces.IDrinkConfigurer;
 import com.yash.tcvm.enumeration.Drink;
 import com.yash.tcvm.enumeration.Ingredient;
 
 public class BlackTeaConfiguration extends AbstractDrinkConfigurer {
+	
+	private static Logger logger = Logger.getLogger(BlackTeaConfiguration.class);
 
 	private static IDrinkConfigurer drinkConfigurer;
 
@@ -35,6 +39,8 @@ public class BlackTeaConfiguration extends AbstractDrinkConfigurer {
 	}
 
 	public void configIngredientConsumption() {
+		logger.info("BlackTeaConfiguration's configIngredientConsumption() method starts");
+		
 		Map<Ingredient, Double> ingredientsConsumption = new HashMap<Ingredient, Double>();
 
 		ingredientsConsumption.put(Ingredient.TEA, TEA_CONSUMPTION);
@@ -45,6 +51,8 @@ public class BlackTeaConfiguration extends AbstractDrinkConfigurer {
 	}
 
 	public void configIngredientWastage() {
+		logger.info("BlackTeaConfiguration's configIngredientWastage() method starts");
+		
 		Map<Ingredient, Double> ingredientsWastage = new HashMap<Ingredient, Double>();
 
 		ingredientsWastage.put(Ingredient.TEA, TEA_WASTAGE);
@@ -55,10 +63,12 @@ public class BlackTeaConfiguration extends AbstractDrinkConfigurer {
 	}
 
 	public void configDrinkType() {
+		logger.info("BlackTeaConfiguration's configDrinkType() method starts");
 		setDrinkType(Drink.BLACK_TEA);
 	}
 
 	public void configDrinkRate() {
+		logger.info("BlackTeaConfiguration's configDrinkRate() method starts");
 		setDrinkRate(RATE);
 	}
 

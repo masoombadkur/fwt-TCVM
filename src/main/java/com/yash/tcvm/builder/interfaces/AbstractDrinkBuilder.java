@@ -3,6 +3,8 @@ package com.yash.tcvm.builder.interfaces;
 import java.io.FileNotFoundException;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import com.yash.tcvm.config.interfaces.AbstractDrinkConfigurer;
 import com.yash.tcvm.config.interfaces.IDrinkConfigurer;
 import com.yash.tcvm.dao.ContainerDao;
@@ -20,6 +22,8 @@ import com.yash.tcvm.serviceimpl.ContainerServiceImpl;
 import com.yash.tcvm.serviceimpl.OrderServiceImpl;
 
 public abstract class AbstractDrinkBuilder implements IDrinkBuilder {
+	
+	private static Logger logger = Logger.getLogger(AbstractDrinkBuilder.class);
 
 	IDrinkConfigurer drinkConfigurer;
 
@@ -34,12 +38,15 @@ public abstract class AbstractDrinkBuilder implements IDrinkBuilder {
 	}
 
 	public void prepareDrink(Order order) throws ContainerUnderflowException, FileNotFoundException, EmptyException {
+		logger.info("AbstractDrinkBuilder's prepareDrink() method starts");
 		checkUnderFlow(order);
 		updateContainers(order);
 		placeOrder(order);
 	}
 
 	private void checkUnderFlow(Order order) throws FileNotFoundException, ContainerUnderflowException {
+		logger.info("AbstractDrinkBuilder's checkUnderFlow() method starts");
+		
 		AbstractDrinkConfigurer abstractDrinkConfigurer = (AbstractDrinkConfigurer) drinkConfigurer;
 
 		Map<Ingredient, Double> consumption = abstractDrinkConfigurer.getIngredientConsumption();
@@ -64,6 +71,7 @@ public abstract class AbstractDrinkBuilder implements IDrinkBuilder {
 	}
 
 	private void updateContainers(Order order) throws FileNotFoundException, EmptyException {
+		logger.info("AbstractDrinkBuilder's updateContainers() method starts");
 
 		AbstractDrinkConfigurer abstractDrinkConfigurer = (AbstractDrinkConfigurer) drinkConfigurer;
 
@@ -86,11 +94,13 @@ public abstract class AbstractDrinkBuilder implements IDrinkBuilder {
 	}
 
 	private void placeOrder(Order order) throws FileNotFoundException, EmptyException {
+		logger.info("AbstractDrinkBuilder's placeOrder() method starts");
 		order.setStatus(true);
 		orderService.addOrder(order);
 	}
 
 	public double getDrinkRate() {
+		logger.info("AbstractDrinkBuilder's getDrinkRate() method starts");
 		AbstractDrinkConfigurer abstractDrinkConfigurer = (AbstractDrinkConfigurer) drinkConfigurer;
 		return abstractDrinkConfigurer.getDrinkRate();
 	}

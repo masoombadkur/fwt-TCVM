@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.yash.tcvm.builder.BlackCoffeeBuilder;
 import com.yash.tcvm.builder.BlackTeaBuilder;
 import com.yash.tcvm.builder.CoffeeBuilder;
@@ -27,7 +29,14 @@ import com.yash.tcvm.serviceimpl.DrinkServiceImpl;
 import com.yash.tcvm.serviceimpl.ReportServiceImpl;
 import com.yash.tcvm.util.FileUtil;
 
+/**
+ * This class interacts with different service classes.
+ * @author masoom.badkur
+ *
+ */
 public class TCVM {
+	
+	private static Logger logger = Logger.getLogger(TCVM.class);
 
 	private Scanner scanner;
 
@@ -57,6 +66,8 @@ public class TCVM {
 	}
 
 	public void start() throws EmptyException {
+		logger.info("TCVM's start() method starts");
+		
 		List<String> menuOptions = null;
 		String choice = null;
 
@@ -89,6 +100,8 @@ public class TCVM {
 	}
 
 	public List<String> getMenu(String filePath) throws FileNotFoundException, EmptyException {
+		
+		logger.info("TCVM's getMenu() method starts");
 
 		checkIfFilePathIsNull(filePath);
 
@@ -184,6 +197,8 @@ public class TCVM {
 	}
 
 	private void makeCoffee() {
+		logger.info("TCVM's makeCoffee() method starts");
+		
 		System.out.println("## PREPARING COFFEE ##");
 		IDrinkBuilder drinkBuilder = CoffeeBuilder.getDrinkBuilder();
 		makeDrink(drinkBuilder, Drink.COFFEE);
@@ -191,6 +206,8 @@ public class TCVM {
 	}
 
 	private void makeTea() {
+		logger.info("TCVM's makeTea() method starts");
+		
 		System.out.println("## PREPARING TEA ##");
 		IDrinkBuilder drinkBuilder = TeaBuilder.getDrinkBuilder();
 		makeDrink(drinkBuilder, Drink.TEA);
@@ -198,6 +215,8 @@ public class TCVM {
 	}
 
 	private void makeBlackCoffee() {
+		logger.info("TCVM's makeBlackCoffee() method starts");
+		
 		System.out.println("## PREPARING BLACK COFFEE ##");
 		IDrinkBuilder drinkBuilder = BlackCoffeeBuilder.getDrinkBuilder();
 		makeDrink(drinkBuilder, Drink.BLACK_COFFEE);
@@ -205,6 +224,8 @@ public class TCVM {
 	}
 
 	private void makeBlackTea() {
+		logger.info("TCVM's makeBlackTea() method starts");
+		
 		System.out.println("## PREPARING Black TEA ##");
 		IDrinkBuilder drinkBuilder = BlackTeaBuilder.getDrinkBuilder();
 		makeDrink(drinkBuilder, Drink.BLACK_TEA);
@@ -212,6 +233,8 @@ public class TCVM {
 	}
 
 	private void refillContainer() {
+		logger.info("TCVM's refillContainer() method starts");
+		
 		System.out.println("## REFILLING CONTAINER ##");
 		List<Container> containers = null;
 		try {
@@ -238,6 +261,8 @@ public class TCVM {
 	}
 
 	private void checkTotalSale() {
+		logger.info("TCVM's checkTotalSale() method starts");
+		
 		System.out.println("## TOTAL SALE ##");
 		try {
 			System.out.println("Drink: " + Drink.TEA + " --- Total sale: Rs."
@@ -256,6 +281,8 @@ public class TCVM {
 	}
 
 	private void containerStatus() {
+		logger.info("TCVM's containerStatus() method starts");
+		
 		System.out.println("## CONTAINERS STATUS ##");
 		List<Container> containers = null;
 		try {
@@ -273,6 +300,8 @@ public class TCVM {
 	}
 
 	private void showReports() {
+		logger.info("TCVM's showReports() method starts");
+		
 		System.out.println("## DISPLAYING REPORTS ##\nRefer folder src/main/resources/excel_sheets");
 		System.out.println("1. Container Status Report");
 		System.out.println("1. Total Tea-Coffee Sale Report Drink Wise");
@@ -290,6 +319,8 @@ public class TCVM {
 	}
 
 	private void makeDrink(IDrinkBuilder drinkBuilder, Drink drink) {
+		logger.info("TCVM's makeDrink() method starts");
+		
 		System.out.println("Enter no of cups: ");
 		int qtyOrdered = scanner.nextInt();
 

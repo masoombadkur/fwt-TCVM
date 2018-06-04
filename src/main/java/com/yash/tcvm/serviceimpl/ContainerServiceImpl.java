@@ -3,6 +3,8 @@ package com.yash.tcvm.serviceimpl;
 import java.io.FileNotFoundException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.yash.tcvm.dao.ContainerDao;
 import com.yash.tcvm.enumeration.Ingredient;
 import com.yash.tcvm.exception.EmptyException;
@@ -10,6 +12,8 @@ import com.yash.tcvm.model.Container;
 import com.yash.tcvm.service.ContainerService;
 
 public class ContainerServiceImpl implements ContainerService {
+	
+	private static Logger logger = Logger.getLogger(ContainerServiceImpl.class);
 
 	private ContainerDao containerDao;
 
@@ -19,6 +23,8 @@ public class ContainerServiceImpl implements ContainerService {
 
 	@Override
 	public List<Container> getContainers() throws FileNotFoundException, EmptyException {
+		logger.info("ContainerServiceImpl's getContainers() method starts");
+		
 		List<Container> containers = containerDao.getContainers();
 		if (containers == null) {
 			throw new NullPointerException("Container's list is null");
@@ -32,6 +38,8 @@ public class ContainerServiceImpl implements ContainerService {
 
 	@Override
 	public Container getContainer(Ingredient ingredient) throws FileNotFoundException {
+		logger.info("ContainerServiceImpl's getContainer() method starts");
+		
 		if (ingredient == null) {
 			throw new NullPointerException("Ingredient is null");
 		}
@@ -41,6 +49,8 @@ public class ContainerServiceImpl implements ContainerService {
 
 	@Override
 	public int updateContainer(Container container) throws FileNotFoundException, EmptyException {
+		logger.info("ContainerServiceImpl's updateContainer() method starts");
+		
 		int rowsAffected = 0;
 		if (container == null) {
 			throw new NullPointerException("Container cannot be null");
