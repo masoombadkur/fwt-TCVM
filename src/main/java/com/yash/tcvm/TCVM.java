@@ -30,8 +30,8 @@ import com.yash.tcvm.serviceimpl.ReportServiceImpl;
 import com.yash.tcvm.util.FileUtil;
 
 /**
- * This class interacts with different service classes to perform logical
- * operations.
+ * This class interacts with different service classes to perform operations
+ * based on user choice.
  * 
  * @author masoom.badkur
  *
@@ -323,22 +323,26 @@ public class TCVM {
 	private void makeDrink(IDrinkBuilder drinkBuilder, Drink drink) {
 		logger.info("TCVM's makeDrink() method starts");
 
-		System.out.println("Enter no of cups: ");
+		System.out.println("Enter no of cups(less than 30): ");
 		int qtyOrdered = scanner.nextInt();
 
-		Order order = new Order();
-		order.setDrink(drink);
-		order.setQuantity(qtyOrdered);
-
-		try {
-			drinkBuilder.prepareDrink(order);
-		} catch (FileNotFoundException e) {
-			System.out.println("Required JSON file not found");
-		} catch (ContainerUnderflowException e) {
-			System.out.println("Not enough ingredient in any of the required container");
-		} catch (EmptyException e) {
-			System.out.println("Required JSON file is empty");
+		if (qtyOrdered > 0 && qtyOrdered < 30) {
+			Order order = new Order();
+			order.setDrink(drink);
+			order.setQuantity(qtyOrdered);
+			try {
+				drinkBuilder.prepareDrink(order);
+			} catch (FileNotFoundException e) {
+				System.out.println("Required JSON file not found");
+			} catch (ContainerUnderflowException e) {
+				System.out.println("Not enough ingredient in any of the required container");
+			} catch (EmptyException e) {
+				System.out.println("Required JSON file is empty");
+			}
+		} else {
+			System.out.println("No of cups should be positive and less than 30");
 		}
+
 	}
 
 }
