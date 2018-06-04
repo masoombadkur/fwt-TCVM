@@ -45,6 +45,6 @@ public class TCVMTest {
 	
 	@Test
 	public void getMenu_shouldReturnNoOfLinesInFileAsList_whenFilePathIsGiven() throws FileNotFoundException, EmptyException {
-		assertEquals(12, tcvm.getMenu("src/test/resources/menu/menu.txt").size());
+		assertEquals(15, tcvm.getMenu("src/test/resources/menu/menu.txt").size());
 	}
 }

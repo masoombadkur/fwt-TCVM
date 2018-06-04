@@ -38,5 +38,25 @@
     "quantity": 5,
     "drink": "COFFEE",
     "status": true
+  },
+  {
+    "quantity": 5,
+    "drink": "COFFEE",
+    "status": true
+  },
+  {
+    "quantity": 10,
+    "drink": "COFFEE",
+    "status": true
+  },
+  {
+    "quantity": 5,
+    "drink": "TEA",
+    "status": true
+  },
+  {
+    "quantity": 7,
+    "drink": "BLACK_COFFEE",
+    "status": true
   }
 ]
