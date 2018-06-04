@@ -1,0 +1,27 @@
+[
+  {
+    "ingredient": "MILK",
+    "maxCapacity": 10000.0,
+    "currentAvailability": 10000.0
+  },
+  {
+    "ingredient": "TEA",
+    "maxCapacity": 2000.0,
+    "currentAvailability": 2000.0
+  },
+  {
+    "ingredient": "COFFEE",
+    "maxCapacity": 2000.0,
+    "currentAvailability": 2000.0
+  },
+  {
+    "ingredient": "WATER",
+    "maxCapacity": 15000.0,
+    "currentAvailability": 15000.0
+  },
+  {
+    "ingredient": "SUGAR",
+    "maxCapacity": 8000.0,
+    "currentAvailability": 8000.0
+  }
+]
