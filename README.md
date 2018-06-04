@@ -1,26 +1,26 @@
 # Tea-Coffee Vending Machine
 
 ### Problem Statement
-  Tea Coffee Vending machine is used for making tea and coffee. Now a day’s Tea-Coffee
+  Tea Coffee Vending machine is used for making tea and coffee. Now a dayâ€™s Tea-Coffee
 vending machine is a common need of an organization refreshment stall, where one can
 easily serve different flavor of tea and coffee drink.
-br 
-br 
+<br /> 
+<br />
 Here we want a simulator of tea-coffee vending machine. The TCVM should have different
 containers to contain material needed for making tea-coffee. When system is started it should
 be initialized with material. It should have user friendly interface to operate system. System
 should also have flexible reporting features.
 
 ### Requirements
- Make Coffee
- Make Tea
- Make Black Coffee
- Make Black Tea
- Refill Container
- Check Total Sale
- Container Status
- Show Reports
- Exit TCVM
+ * Make Coffee
+ * Make Tea
+ * Make Black Coffee
+ * Make Black Tea
+ * Refill Container
+ * Check Total Sale
+ * Container Status
+ * Show Reports
+ * Exit TCVM
 
 ### Use Case
 ![Use case diagram](images/tcvm_use_case_diagram.png)
